@@ -18,4 +18,11 @@ server.on('request', function(request) {
 server.emit('request', {from: 'Клиент'});
 server.emit('request', {from: 'Ещё Клиент'});
 
-console.log(server.listeners('request'))
+console.log(server.listeners('request'));
+
+server.on('error', function(e) {
+  console.log('The error has been handled')
+  console.log(e.message)
+})
+
+server.emit('error', new Error('Ошибка Ошибка Ошибка'))
