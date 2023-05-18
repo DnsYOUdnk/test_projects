@@ -13,13 +13,14 @@ let int;
 function addList(num) {
   if(count > 10) {
     clearInterval(int);
-    return;
+    document.body.querySelector('ol').remove();
+  } else {
+    const li = document.createElement('li');
+    const color = ['pink', 'green', 'orange', 'purple', 'blue', 'red', 'darkred', 'black', 'violet', 'darkblue']
+    li.style.color = color[num - 1];
+    li.textContent = `number - ${num}`;
+    list.append(li);
   }
-  const li = document.createElement('li');
-  const color = ['pink', 'green', 'orange', 'purple', 'blue', 'red', 'darkred', 'black', 'violet', 'darkblue']
-  li.style.color = color[num - 1];
-  li.textContent = `number - ${num}`;
-  list.append(li);
 }
 
 int = setInterval(() => addList(++count), 1000);
