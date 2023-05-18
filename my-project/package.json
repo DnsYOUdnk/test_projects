@@ -4,6 +4,7 @@
   "description": "webpack config habr",
   "main": "index.js",
   "scripts": {
+    "build": "webpack --mode production",
     "dev": "webpack --mode development",
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "webpack serve --open --mode development"
@@ -12,6 +13,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
+    "babel-loader": "^9.1.2",
     "filemanager-webpack-plugin": "^8.0.0",
     "html-webpack-plugin": "^5.5.1",
     "webpack": "^5.83.1",
