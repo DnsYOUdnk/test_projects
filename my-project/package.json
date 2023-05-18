@@ -18,6 +18,8 @@
     "babel-loader": "^9.1.2",
     "filemanager-webpack-plugin": "^8.0.0",
     "html-webpack-plugin": "^5.5.1",
+    "pug": "^2.0.4",
+    "pug-loader": "^2.4.0",
     "webpack": "^5.83.1",
     "webpack-cli": "^5.1.1",
     "webpack-dev-server": "^4.15.0"
