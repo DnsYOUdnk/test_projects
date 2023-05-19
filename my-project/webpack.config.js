@@ -52,7 +52,22 @@ module.exports = {
       events: {
         onStart: {
           delete: ['dist'],
-        }
+          copy: [
+            {
+              source: path.join('src'),
+              destination: path.join('content','src'),
+            }
+          ],
+        },
+        onEnd: {
+          delete: [path.join('content', 'src')],
+          copy: [
+            {
+              source: path.join('src', 'static'),
+              destination: 'dist',
+            }
+          ],
+        },
       }
     }),
     new MiniCssExtractPlugin({
