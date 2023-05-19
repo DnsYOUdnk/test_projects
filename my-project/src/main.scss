@@ -25,3 +25,15 @@ html {
 .logo3 {
   width: 10em;
 }
+
+.h1 {
+  color: rgba(82, 7, 7, 0.759);
+  animation: gogo 3s infinite alternate ;
+}
+
+@keyframes gogo {
+  0%   {background-color: red; transform: scaleX(0.9);}
+  25%  {background-color: yellow; transform: rotate(40deg);}
+  50%  {background-color: blue; transform: scaleX(0.4);}
+  100% {background-color: green; transform: rotate(-140deg);}
+}

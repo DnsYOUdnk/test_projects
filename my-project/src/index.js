@@ -1,3 +1,7 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './components/app'
+
 import './main.scss';
 import './fonts/fonts.scss';
 
@@ -30,3 +34,5 @@ int = setInterval(() => addList(++count), 1000);
 
 document.body.prepend(component('Проект собран с помощью Webpack 5.83.1'));
 document.body.append(list);
+
+ReactDOM.render(<App/>, document.getElementById('root'))
