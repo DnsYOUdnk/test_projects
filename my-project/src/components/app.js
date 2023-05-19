@@ -7,15 +7,16 @@ class App extends Component {
       count: 0
     }
   }
-  
+
   render() {
     return (
       <>
         <h1 className="h1">
           Приложение на React
         </h1>
+        <button onClick={() => this.setState({count: ++this.state.count})}>UP</button>
         <div>{this.state.count}</div>
-        <button onClick={() => this.setState({count: ++this.state.count})}>Click me</button>
+        <button onClick={() => this.setState({count: --this.state.count})}>DOWN</button>
       </>
     )
   }
