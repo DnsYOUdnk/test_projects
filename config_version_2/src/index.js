@@ -1,4 +1,5 @@
 import './styles/style.css';
+import './styles/index.scss';
 
 const mult = function(a,b) {
   return a * b;

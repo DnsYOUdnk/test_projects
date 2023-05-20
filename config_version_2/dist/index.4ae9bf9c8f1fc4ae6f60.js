@@ -1,1 +1,0 @@
-!function(){const o=function(o,n){return o*n};console.log(o(23,12)),console.log(o(13,12)),console.log(o(14,121))}();
