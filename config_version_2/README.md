@@ -1,0 +1,1 @@
+Config webpack 5 from [youtube channel](https://www.youtube.com/watch?v=o8KMucDpSno&list=WL&index=47&ab_channel=%D0%9E%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0METHED)
