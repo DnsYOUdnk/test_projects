@@ -1,41 +1,41 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const mode = process.env.NODE_ENV || 'development';
+const mode = process.env.NODE_ENV || "development";
 
-const devMode = mode === 'development';
+const devMode = mode === "development";
 
-const target = devMode ? 'web' : 'browserslist';
-const devtool = devMode ? 'source-map' : undefined;
+const target = devMode ? "web" : "browserslist";
+const devtool = devMode ? "source-map" : undefined;
 
 module.exports = {
   mode,
   target,
   devtool,
-  entry: path.resolve(__dirname, 'src', 'index.js'),
+  entry: ["@babel/polyfill", path.resolve(__dirname, "src", "index.js")],
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, "dist"),
     clean: true,
-    filename: 'index.[contenthash].js',
+    filename: "index.[contenthash].js",
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src', 'index.html'),
+      template: path.resolve(__dirname, "src", "index.html"),
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
+      filename: "[name].[contenthash].css",
     }),
   ],
   devServer: {
-    watchFiles: path.resolve(__dirname, 'src'),
+    watchFiles: path.resolve(__dirname, "src"),
     port: 9000,
   },
   module: {
     rules: [
       {
         test: /\.html$/i,
-        loader: 'html-loader'
+        loader: "html-loader"
       },
       {
         test: /\.(c|s[ac])ss$/i,
@@ -52,6 +52,18 @@ module.exports = {
           },
           "sass-loader",
         ],
+      },
+      {
+        test: /\.(?:js|mjs|cjs)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [
+              ["@babel/preset-env", { targets: "defaults" }]
+            ]
+          }
+        }
       },
     ],
   },
