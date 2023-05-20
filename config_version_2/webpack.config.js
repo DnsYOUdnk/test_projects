@@ -18,6 +18,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     clean: true,
     filename: "index.[contenthash].js",
+    assetModuleFilename: path.join("assets", "[name].[contenthash][ext]")
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -38,7 +39,19 @@ module.exports = {
         loader: "html-loader"
       },
       {
-        test: /\.(c|s[ac])ss$/i,
+        test: /\.(?:js|mjs|cjs)$/i,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [
+              ["@babel/preset-env", { targets: "defaults" }]
+            ]
+          }
+        }
+      },
+      {
+        test: /\.(c|sa|sc)ss$/i,
         use: [
           devMode ? "style-loader" : MiniCssExtractPlugin.loader, 
           "css-loader",
@@ -54,16 +67,38 @@ module.exports = {
         ],
       },
       {
-        test: /\.(?:js|mjs|cjs)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: [
-              ["@babel/preset-env", { targets: "defaults" }]
-            ]
-          }
-        }
+        test: /\.(woff2?|eot|ttf|otf)$/i,
+        type: "asset/resource",
+        generator: {
+          filename: "fonts/[name][ext]"
+        },
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/i,
+        use: [
+          {
+            loader: "image-webpack-loader",
+            options: {
+              mozjpeg: {
+                progressive: true,
+              },
+              optipng: {
+                enabled: false,
+              },
+              pngquant: {
+                quality: [0.65, 0.90],
+                speed: 4
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+              webp: {
+                quality: 75
+              }
+            }
+          },
+        ],
+        type: "asset/resource",
       },
     ],
   },
