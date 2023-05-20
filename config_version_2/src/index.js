@@ -1,3 +1,5 @@
+import './styles/style.css';
+
 const mult = function(a,b) {
   return a * b;
 }
